@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>44170b0d-daa4-4ef9-ab91-6fc10d2de2f9</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.8" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.8" />
+	  
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.8" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.8" />
+
+	  <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
+	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+</Project>

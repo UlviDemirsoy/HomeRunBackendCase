@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ratings-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ratingservice
+  template:
+    metadata:
+      labels:
+        app: ratingservice
+    spec:
+      containers:
+        - name: ratingservice
+          image: senpaicq/ratingservice:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ratings-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: ratingservice
+  ports:
+  - name: ratingservice
+    protocol: TCP
+    port: 80
+    targetPort: 80 
