@@ -11,10 +11,10 @@
 
 Ratings Service
 
-Create-Read ServiceProviders
-Create Ratings for ServiceProviders
-Read ServiceProviders' ratings
-Read ServiceProviders' average rating points.
+Create-Read ServiceProviders.  
+Create Ratings for ServiceProviders.  
+Read ServiceProviders' ratings.  
+Read ServiceProviders' average rating points.  
 
 Notification Service
 
