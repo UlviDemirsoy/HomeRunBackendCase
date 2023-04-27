@@ -27,7 +27,7 @@ Possible Improvements
 
 * A service layer can be added between the controller and the repository to have cleaner architecture.  
  
-How to Deploy  
+# How to Deploy  
   
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!"  
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.7.0/deploy/static/provider/cloud/deploy.yaml  
