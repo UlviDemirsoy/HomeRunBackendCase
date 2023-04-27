@@ -6,12 +6,27 @@
  Loadbalancers added for externel access to rabbitmq and sql server pods.  
  
  
+
+#Service Descriptions
+
+Ratings Service
+
+Create-Read ServiceProviders
+Create Ratings for ServiceProviders
+Read ServiceProviders' ratings
+Read ServiceProviders' average rating points.
+
+Notification Service
+
+When a new rating is added with the rating service, a message is sent to the notification service with the amqp protocol.   
+Thee notification service records these ratings. Rating notification can only be seen once then flagged as seen by api.
+
+
+
 Possible Improvements  
 
 * A service layer can be added between the controller and the repository to have cleaner architecture.  
  
-
-
 How to Deploy  
   
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!"  
@@ -25,4 +40,4 @@ kubectl apply -f notifications-depl.yaml
 kubectl apply -f notifications-np-srv.yaml  
 kubectl apply -f ingress-srv.yaml  
   
-Add acme.com to machine's host file to access with nginx.
+Add acme.com to machine's host file to access with nginx or else apis are accesible via nodeports.
