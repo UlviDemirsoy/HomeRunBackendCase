@@ -2,8 +2,8 @@
 
  ![HomeRunk8sArchitecture](https://user-images.githubusercontent.com/31182762/235013128-1be367ac-33ae-4e47-bc96-8e66f0add8a5.png)
 
- Node ports added to external access to apis.
- Loadbalancers added to externel access to rabbitmq and sql server pods.
+ Node ports added for external access to apis.
+ Loadbalancers added for externel access to rabbitmq and sql server pods.
  
  
 Possible Improvements
