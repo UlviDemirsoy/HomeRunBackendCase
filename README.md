@@ -19,7 +19,7 @@ Read ServiceProviders' average rating points.
 Notification Service
 
 When a new rating is added with the rating service, a message is sent to the notification service with the amqp protocol.   
-Thee notification service records these ratings. Rating notification can only be seen once then flagged as seen by api.
+The notification service records these ratings. Rating notification can only be seen once then flagged as seen by api.
 
 
 
