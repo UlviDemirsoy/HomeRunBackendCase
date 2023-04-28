@@ -172,7 +172,7 @@ namespace RatingService.Controllers
                 Console.WriteLine($"--> Could not send asynchronously: {ex.Message}");
             }
 
-            return CreatedAtRoute(nameof(GetRatingById), new { Id = ratingReadDto.Id }, ratingReadDto);
+            return CreatedAtRoute(nameof(CreateRating), new { Id = ratingReadDto.Id }, ratingReadDto);
         }
 
     }
