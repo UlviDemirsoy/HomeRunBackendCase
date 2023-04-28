@@ -209,11 +209,36 @@ namespace RatingService.Tests.Controller
         }
 
 
-      
+
+        [Fact]
+        public void RatingsController_CreateRating_ReturnsCreated()
+        {
+
+            //Arrange
+            int servicepatformid = 1;
+            var ratingCratedto = A.Fake<RatingCreateDto>();
+            var ratingReadto = A.Fake<RatingReadDto>();
+            var ratingItem = A.Fake<Rating>();
+            A.CallTo(() => _repository.ServiceProviderExists(servicepatformid)).Returns(true);
+            A.CallTo(() => _mapper.Map<Rating>(ratingCratedto)).Returns(ratingItem);
+            A.CallTo(() => _repository.CreateRating(ratingItem));
+            A.CallTo(() => _repository.SaveChanges());
+            A.CallTo(() => _mapper.Map<RatingReadDto>(ratingItem)).Returns(ratingReadto);
+
+
+            var controller = new RatingsController(_repository, _mapper, _commandDataClient, _messageBusClient);
+
+            //Act
+            var result = controller.CreateRating(ratingCratedto);
+
+            //Assert
+
+            result.Result.Should().NotBeNull();
+            result.Result.Should().BeOfType(typeof(CreatedAtRouteResult));
+        }
 
 
 
-  
 
 
 

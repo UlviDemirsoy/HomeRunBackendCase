@@ -163,9 +163,9 @@ namespace RatingService.Controllers
             //Send Async Message
             try
             {
-                var platformPublishedDto = _mapper.Map<RatingPublishedDto>(ratingReadDto);
-                platformPublishedDto.Event = "Rating_Published";
-                _messageBusClient.PublishNewRating(platformPublishedDto);
+                var ratingPublishedDto = _mapper.Map<RatingPublishedDto>(ratingReadDto);
+                ratingPublishedDto.Event = "Rating_Published";
+                _messageBusClient.PublishNewRating(ratingPublishedDto);
             }
             catch (Exception ex)
             {
