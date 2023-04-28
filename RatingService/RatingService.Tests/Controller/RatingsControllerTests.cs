@@ -64,6 +64,7 @@ namespace RatingService.Tests.Controller
             var serviceProviderItems = A.Fake<IEnumerable<ServiceProvider>>();
             var serviceProviderdto = A.Fake<IEnumerable<ServiceProviderReadDto>>();
             A.CallTo(() => _mapper.Map<IEnumerable<ServiceProviderReadDto>>(serviceProviderItems)).Returns(serviceProviderdto);
+          
             var controller = new RatingsController(_repository, _mapper, _commandDataClient, _messageBusClient);
 
             //Act
@@ -76,6 +77,69 @@ namespace RatingService.Tests.Controller
             result.Result.Should().NotBeNull();
             result.Result.Should().BeOfType(typeof(OkObjectResult));
         }
+
+        [Fact]
+        public void RatingsController_GetServiceProviderById_ReturnsNotFound()
+        {
+            //Arrange
+            int id = 1;
+            var serviceProviderItems = A.Fake<IEnumerable<ServiceProvider>>();
+            var serviceProviderdto = A.Fake<IEnumerable<ServiceProviderReadDto>>();
+            A.CallTo(() => _mapper.Map<IEnumerable<ServiceProviderReadDto>>(serviceProviderItems)).Returns(serviceProviderdto);
+            A.CallTo(() => _repository.GetServiceProviderById(id)).Returns(null);
+            var controller = new RatingsController(_repository, _mapper, _commandDataClient, _messageBusClient);
+
+            //Act
+
+            var result = controller.GetServiceProviderById(id);
+
+            //Assert
+
+            result.Result.Should().NotBeNull();
+            result.Result.Should().BeOfType(typeof(NotFoundResult));
+        }
+
+
+        [Fact]
+        public void RatingsController_GetServiceProviderRatingsById_ReturnsOK()
+        {
+            //Arrange
+            int id = 1;
+            var serviceProviderItem = A.Fake<ServiceProvider>();
+            A.CallTo(() => _repository.ServiceProviderExists(id)).Returns(true);
+            var controller = new RatingsController(_repository, _mapper, _commandDataClient, _messageBusClient);
+
+            //Act
+
+            var result = controller.GetServiceProviderRatingsById(id);
+
+
+            //Assert
+
+            result.Result.Should().NotBeNull();
+            result.Result.Should().BeOfType(typeof(OkObjectResult));
+        }
+
+        [Fact]
+        public void RatingsController_GetServiceProviderRatingsById_ReturnsNotFound()
+        {
+            //Arrange
+            int id = 1;
+            var serviceProviderItem = A.Fake<ServiceProvider>();
+            A.CallTo(() => _repository.ServiceProviderExists(id)).Returns(false);
+            var controller = new RatingsController(_repository, _mapper, _commandDataClient, _messageBusClient);
+
+            //Act
+
+            var result = controller.GetServiceProviderRatingsById(id);
+
+
+            //Assert
+
+            result.Result.Should().NotBeNull();
+            result.Result.Should().BeOfType(typeof(NotFoundResult));
+        }
+
 
         [Fact]
         public void RatingsController_GetServiceProviderAverageRatingById_ReturnsOK()
@@ -118,6 +182,31 @@ namespace RatingService.Tests.Controller
             result.Result.Should().BeOfType(typeof(NotFoundResult));
         }
 
+
+        [Fact]
+        public void RatingsController_CreateServiceProvider_ReturnsCreated()
+        {
+            //Arrange
+            var serviceProviderItem = A.Fake<ServiceProvider>();
+            var serviceProviderCratedto = A.Fake<ServiceProviderCreateDto>();
+            var serviceProviderReaddto = A.Fake<ServiceProviderReadDto>();
+            A.CallTo(() => _mapper.Map<ServiceProvider>(serviceProviderCratedto)).Returns(serviceProviderItem);
+            A.CallTo(() => _repository.CreateServiceProvider(serviceProviderItem));
+            A.CallTo(() => _repository.SaveChanges());
+            A.CallTo(() => _mapper.Map<ServiceProviderReadDto>(serviceProviderItem)).Returns(serviceProviderReaddto);
+
+            var controller = new RatingsController(_repository, _mapper, _commandDataClient, _messageBusClient);
+
+            //Act
+
+            var result = controller.CreateServiceProvider(serviceProviderCratedto);
+
+
+            //Assert
+
+            result.Result.Should().NotBeNull();
+            result.Result.Should().BeOfType(typeof(CreatedAtRouteResult));
+        }
 
     }
 }
