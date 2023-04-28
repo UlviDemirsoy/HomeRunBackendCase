@@ -45,8 +45,8 @@ namespace NotificationService.Tests.Controller
 
             //Assert
 
-            result.Should().NotBeNull();
-            result.Should().BeOfType(typeof(ActionResult<IEnumerable<RatingReadDto>>));
+            result.Result.Should().NotBeNull();
+            result.Result.Should().BeOfType(typeof(OkObjectResult));
 
 
 
