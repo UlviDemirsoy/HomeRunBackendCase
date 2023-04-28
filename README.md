@@ -26,7 +26,9 @@ The notification service records these ratings. Rating notification can only be 
 Possible Improvements  
 
 * A service layer can be added between the controller and the repository to have cleaner architecture.  
- 
+* Repository can be seperated for ServiceProviders and Ratings.  
+
+
 # How to Deploy  
   
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!"  
