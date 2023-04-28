@@ -10,7 +10,7 @@ spec:
     - host: acme.com
       http:
         paths:
-          - path: /api/ratings
+          - path: /api
             pathType: Prefix
             backend:
               service:

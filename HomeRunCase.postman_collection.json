@@ -1,0 +1,418 @@
+{
+	"info": {
+		"_postman_id": "0719f0a4-7b2b-423f-83e5-a572768542d7",
+		"name": "HomeRunCase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3074074"
+	},
+	"item": [
+		{
+			"name": "k8s",
+			"item": [
+				{
+					"name": "NodePort",
+					"item": [
+						{
+							"name": "Ratings Service",
+							"item": [
+								{
+									"name": "GetServiceProviders",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:31562/api/serviceproviders/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "31562",
+											"path": [
+												"api",
+												"serviceproviders",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddServiceProvider",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\" : \"test2\",\r\n    \"description\" : \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:31562/api/ServiceProviders/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "31562",
+											"path": [
+												"api",
+												"ServiceProviders",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetServiceProvidersById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:31562/api/serviceproviders/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "31562",
+											"path": [
+												"api",
+												"serviceproviders",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetServiceProviderRatings",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:31562/api/ServiceProviders/1/Ratings",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "31562",
+											"path": [
+												"api",
+												"ServiceProviders",
+												"1",
+												"Ratings"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetServiceProviderAverageRating",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:31562/api/ServiceProviders/1/AverageRating",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "31562",
+											"path": [
+												"api",
+												"ServiceProviders",
+												"1",
+												"AverageRating"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetAllRatings",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:31562/api/Ratings",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "31562",
+											"path": [
+												"api",
+												"Ratings"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddNewRating",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"point\": 10,\r\n  \"serviceProviderId\": 2\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:31562/api/Ratings",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "31562",
+											"path": [
+												"api",
+												"Ratings"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Notification Service",
+							"item": [
+								{
+									"name": "GetNewNotifications",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:31129/api/n/notifications",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "31129",
+											"path": [
+												"api",
+												"n",
+												"notifications"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "nginx",
+					"item": [
+						{
+							"name": "Ratings Service",
+							"item": [
+								{
+									"name": "GetServiceProviders",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://acme.com/api/serviceproviders/",
+											"protocol": "http",
+											"host": [
+												"acme",
+												"com"
+											],
+											"path": [
+												"api",
+												"serviceproviders",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddServiceProvider",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\" : \"ServiceProvider 1\",\r\n    \"description\" : \"ServiceProvider 1\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://acme.com/api/serviceproviders/",
+											"protocol": "http",
+											"host": [
+												"acme",
+												"com"
+											],
+											"path": [
+												"api",
+												"serviceproviders",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetServiceProvidersById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://acme.com/api/serviceproviders/1",
+											"protocol": "http",
+											"host": [
+												"acme",
+												"com"
+											],
+											"path": [
+												"api",
+												"serviceproviders",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetServiceProviderRatings",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://acme.com/api/ServiceProviders/1/Ratings",
+											"protocol": "https",
+											"host": [
+												"acme",
+												"com"
+											],
+											"path": [
+												"api",
+												"ServiceProviders",
+												"1",
+												"Ratings"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetServiceProviderAverageRating Copy",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://acme.com/api/ServiceProviders/1/AverageRating",
+											"protocol": "http",
+											"host": [
+												"acme",
+												"com"
+											],
+											"path": [
+												"api",
+												"ServiceProviders",
+												"1",
+												"AverageRating"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetAllRatings",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://acme.com/api/ratings/",
+											"protocol": "http",
+											"host": [
+												"acme",
+												"com"
+											],
+											"path": [
+												"api",
+												"ratings",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddNewRating",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"point\": 2,\r\n  \"serviceProviderId\": 1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://acme.com/api/Ratings",
+											"protocol": "http",
+											"host": [
+												"acme",
+												"com"
+											],
+											"path": [
+												"api",
+												"Ratings"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Notification Service",
+							"item": [
+								{
+									"name": "GetNewNotifications",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://acme.com/api/n/notifications",
+											"protocol": "http",
+											"host": [
+												"acme",
+												"com"
+											],
+											"path": [
+												"api",
+												"n",
+												"notifications"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
