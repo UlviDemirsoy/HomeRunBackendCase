@@ -137,7 +137,14 @@ namespace RatingService.Controllers
         [HttpPost("/api/Ratings/", Name = "CreateRating")]
         public async Task<ActionResult<RatingReadDto>> CreateRating(RatingCreateDto ratingCreateDto)
         {
+            if (!_repository.ServiceProviderExists(ratingCreateDto.ServiceProviderId))
+            {
+                return NotFound();
+            }
+
+
             var ratingModel = _mapper.Map<Rating>(ratingCreateDto);
+
             _repository.CreateRating(ratingModel);
             _repository.SaveChanges();
 
